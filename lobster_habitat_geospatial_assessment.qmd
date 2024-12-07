@@ -1,5 +1,5 @@
 ---
-title: "California Spiny Lobster Habitat Assessment for Aquaculture Opportunities"
+title: "California Spiny Lobster: Habitat Assessment for Aquaculture Opportunities"
 author: "Karol Paya"
 date: Dec. 7, 2024
 execute: 
@@ -12,39 +12,59 @@ format:
 editor_options: 
   chunk_output_type: console
 ---
-## Study Background
-This study employs a geospatial analysis to assess the suitability of habitats for spiny lobsters (Panulirus interruptus) in California, with a particular focus on identifying areas most conducive to aquaculture development. Spiny lobsters are an economically significant species in the region, and their population dynamics are influenced by factors such as temperature and ocean depth. However, traditional fishing practices have led to pressure on wild populations, prompting a growing interest in sustainable aquaculture as a potential solution. By remote sensing technologies, this analysis integrates environmental data, such as sea surface temperature and Bathymetry, to search for potential areas that could support viable lobster farming operations. 
 
-## Data Details
+# Study Background
 
-**Suitable growing conditions**
+This study employs a geospatial analysis to assess the suitability of habitats for spiny lobsters *(Panulirus interruptus)* in California, with a particular focus on identifying areas most conducive to aquaculture development. Spiny lobsters are an economically significant species in the region, and their population dynamics are influenced by factors such as temperature and ocean depth. However, traditional fishing practices have led to pressure on wild populations, prompting a growing interest in sustainable aquaculture as a potential solution. By remote sensing technologies, this analysis integrates environmental data, such as sea surface temperature and Bathymetry to search for potential areas that could support viable lobster farming operations.
 
-Using California spiny lobster *(Panulirus interruptus)* to showcase the suitable habitat function
+Suitable Growing Conditions:
 
-Location: Eastern Central Pacific, from San Luis Obispo Bay, California, USA, to Magdalena Bay, west coast of Baja California Sur, and along the west coast of the Gulf of California, to Carmen Island, Baja California Sur, Mexico.
+To identify the optimal habitat for California spiny lobsters, the following environmental criteria are considered, based on existing research:
 
-Research has shown that lobsters need the following conditions for optimal growth:
-- Preferred temperature: 14.8c - 22.3c
-- Preferred depth: 0 - 150 m 
+-   Preferred Temperature Range: 14.8°C - 22.3°C
 
-Source: https://www.sealifebase.ca/summary/Panulirus-interruptus.html
+-   Preferred Depth Range: 0 - 150 meters
+
+Source: [Sealifebase](https://www.sealifebase.ca/summary/Panulirus-interruptus.html), 2024
+
+# Data Details
+
+1. Sea Surface Temperature:
+
+The Sea Surface Temperature (SST) dataset from NOAA (2008-2012) provides daily global satellite-derived sea surface temperature anomalies at a 5 km resolution. This dataset is crucial for identifying areas with suitable temperature ranges for spiny lobsters, as their growth and habitat preferences are linked to specific water temperature conditions (14.8°C - 22.3°C). It is used to reclassify temperature data and pinpoint suitable lobster farming areas.
+
+2. Bathymetry:
+
+The General Bathymetric Chart of the Oceans (GEBCO) providesbathymetric data that describes the ocean's depth. This dataset is essential for evaluating the ocean depth of potential lobster habitats, as spiny lobsters prefer specific depth ranges (0-150 meters).
+
+3. Exclusive Economic Zones (EEZs):
+
+The Exclusive Economic Zones (EEZs) dataset from MarineRegions.org defines the marine boundaries of countries.This dataset is used to mask the suitable lobster habitat areas by region, ensuring that only locations within the jurisdictional boundaries of relevant EEZs are considered in the final suitability analysis.
+
+
+## References:
 
 **Sea Surface Temperature**
 
-National Oceanic and Atmospheric Administration (NOAA). 2008-2012. 5km Daily Global Satellite Sea Surface Temperature Anomaly v3.1 [Data set]. NOAA National Centers for Environmental Information. Retrieved Nov. 14, 2024 from https://www.ncei.noaa.gov
+National Oceanic and Atmospheric Administration (NOAA). 2008-2012. 5km Daily Global Satellite Sea Surface Temperature Anomaly v3.1 \[Data set\]. NOAA National Centers for Environmental Information. Retrieved Nov. 14, 2024 from https://www.ncei.noaa.gov
 
 **Bathymetry**
 
-General Bathymetric Chart of the Oceans (GEBCO). 2024. gridded bathymetry data [Data set]. Retrieved Nov. 14, 2024 from https://www.gebco.net/data_and_products/gridded_bathymetry_data/#area
+General Bathymetric Chart of the Oceans (GEBCO). 2024. gridded bathymetry data \[Data set\]. Retrieved Nov. 14, 2024 from https://www.gebco.net/data_and_products/gridded_bathymetry_data/#area
 
 **Exclusive Economic Zones**
 
-MarineRegions.org. (n.d.). Exclusive Economic Zones (EEZs) off the west coast of the United States [Data set]. Retrieved Nov. 14, 2024 fromhttps://www.marineregions.org/
+MarineRegions.org. (n.d.). Exclusive Economic Zones (EEZs) off the west coast of the United States \[Data set\]. Retrieved Nov. 14, 2024 from https://www.marineregions.org/
+
+
+# Geospatial Assessment: Finding suitable areas for lobster
 
 ## Load Libraries
 
 <details>
+
 <summary>Click to view code</summary>
+
 ```{r}
 # Load libraries
 library(tmap)
@@ -63,19 +83,38 @@ library(testthat)
 library(leaflet)
 library(raster)
 ```
+
 </details>
 
-## Function Code
+## Creating a Function to Assess Suitable Areas
 
-To create a workflow to find the suitable areas based on two criteria: ocean depth and water temperature, a function was created with the following procedures:
+To identify the most suitable areas for spiny lobster aquaculture based on ocean depth and water temperature, a function was developed with the following steps:
 
-- Verification of dataset coordinate system
-- Process data: calculate mean temperature, convert temperature units, crop & resample raster to match all dataset extend and resolution
-- Calculate suitable area: reclassify depth and temperature data based on defined criteria, combine rasters
-- Create map
+1.  Verify Dataset Coordinate System
+
+Ensuring all datasets (bathymetry and temperature) are using a consistent and compatible coordinate reference system to facilitate accurate spatial analysis.
+
+2.  Process Data
+
+    -   Calculate Mean Temperature: Compute the average temperature across the study area to account for temporal variability in ocean temperatures.
+
+    -    Convert Temperature Units: Standardize temperature data by converting all values to a consistent unit (e.g., Celsius) for uniform analysis.
+
+    -   Crop and Re-sample Rasters: Clip and re-sample the temperature and bathymetry rasters to match the same spatial extent and resolution, ensuring alignment for further analysis.
+
+3.  Calculate Suitable Areas
+
+    -   Reclassify Depth and Temperature Data: Based on predefined suitability criteria (e.g., preferred depth range: 0-150 m, preferred temperature range: 14.8°C - 22.3°C), reclassify both the bathymetric and temperature rasters into binary suitability maps (suitable/unsuitable).
+
+    -   Combine Rasters: Overlay and combine the reclassified rasters to identify areas that meet both the depth and temperature requirements for spiny lobster habitat suitability.
+
+4.  Create Final Map Generate a visual representation of the suitable areas, highlighting regions that fulfill the specified environmental criteria for potential aquaculture development.
 
 <details>
+
 <summary>Click to view code</summary>
+
+
 ```{r}
 # Define the suitable_habitat_func function
 suitable_habitat_func <- function(tempt_combined,
@@ -250,21 +289,27 @@ suitable_habitat_func <- function(tempt_combined,
   assign("map", map, envir = .GlobalEnv)
   assign("gt_table", gt_table, envir = .GlobalEnv)
 }
-``` 
+```
+
 </details>
 
-## Load Data and Assign Input Variables
+## Load Data & Define Criteria Variables
 
-This section is to assign the filepath to read the data, define input variables:
+In order to perform the analysis and run the function for identifying suitable areas for lobster aquaculture, several key parameters need to be defined. 
+First, the file paths must be specified. These include the path to the raster files containing water temperature and bathymetry data, which will be used to assess habitat suitability.
 
-- High Temperature Threshold: 22.3 C
-- Low Temperature Threshold: 14.8C
-- High Depth Threshold : 0
-- Low Depth Threshold: -150 m
+Additionally, the time period must be assigned to capture relevant environmental conditions over time. criteria variables for both temperature and depth also need to be defined, these are:
+
+-   High Temperature Threshold: 22.3 C
+-   Low Temperature Threshold: 14.8C
+-   High Depth Threshold : 0
+-   Low Depth Threshold: -150 m
 
 
 <details>
+
 <summary>Click to view code</summary>
+
 ```{r}
 # Load economic zones
 wc_regions <- invisible(st_read(here::here("data", "wc_regions_clean.shp")))
@@ -302,16 +347,19 @@ tempt_combined <- rast(unlist(tempt_rasters, use.names = TRUE))
 # Project the temperature combined dataset
 tempt_combined <- project(tempt_combined, crs(wc_regions))
 ```
+
 </details>
 
 ## Finding Suistainable Lobster Habitat Analysis
 
-Section that runs the `suitable_habitat_func` function to obtain results:
+In this section, we run the `suitable_habitat_func` function to identify and assess potential areas for sustainable spiny lobster aquaculture.  
 
 <details>
+
 <summary>Click to view code</summary>
 
 ```{r}
+# Run function
 suitable_habitat_func (tempt_combined,
                        depth,
                        wc_regions,preferred_tempt_high,
@@ -322,16 +370,19 @@ suitable_habitat_func (tempt_combined,
 
 </details>
 
-## California Map
+## Suitable Area for Lobster Aquaculture Map
 
-The map below, depicts the areas in red where it meets both criteria: suitable depth and temperature.
+The map below illustrates the areas (highlighted in red) that meet both the depth and temperature criteria for spiny lobster aquaculture. The red areas on the map indicate zones where both the ocean depth (0-150 meters) and water temperature (14.8°C - 22.3°C) fall within the preferred ranges for sustainable aquaculture.
+
 ```{r}
+# Plot map
 map
 ```
 
 The following table summarizes the calculated total area by region where lobsters can thrive.
 
 ```{r}
+# Display Summary Table
 gt_table
 ```
 
@@ -339,7 +390,8 @@ gt_table
 
 The analysis presented above identifies the most suitable environmental conditions for a marine species in California, with a focus on prioritizing potential aquaculture locations. In this example, the species in question is the lobster, with the following optimal growth conditions:
 
-Temperature: 14.8°C - 22.3°C
+Temperature: 14.8°C - 22.3°C 
+
 Depth: 0 - 150 meters
 
 To conduct this analysis, Sea Surface Temperature and Bathymetry data were processed to assess the suitability of various regions. The function developed for this analysis computes the total suitable area for each region in California, taking into account both temperature and depth criteria.

@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Karol Paya">
+<meta name="dcterms.date" content="2024-12-07">
+
+<title>California Spiny Lobster: Habitat Assessment for Aquaculture Opportunities</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="lobster_habitat_geospatial_assessment_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lobster_habitat_geospatial_assessment_files/libs/quarto-html/quarto.js"></script>
+<script src="lobster_habitat_geospatial_assessment_files/libs/quarto-html/popper.min.js"></script>
+<script src="lobster_habitat_geospatial_assessment_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lobster_habitat_geospatial_assessment_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lobster_habitat_geospatial_assessment_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lobster_habitat_geospatial_assessment_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="lobster_habitat_geospatial_assessment_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lobster_habitat_geospatial_assessment_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lobster_habitat_geospatial_assessment_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="lobster_habitat_geospatial_assessment_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="lobster_habitat_geospatial_assessment_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="lobster_habitat_geospatial_assessment_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="lobster_habitat_geospatial_assessment_files/libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="lobster_habitat_geospatial_assessment_files/libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="lobster_habitat_geospatial_assessment_files/libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="lobster_habitat_geospatial_assessment_files/libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="lobster_habitat_geospatial_assessment_files/libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="lobster_habitat_geospatial_assessment_files/libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="lobster_habitat_geospatial_assessment_files/libs/leaflet-binding-2.2.2/leaflet.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#study-background" id="toc-study-background" class="nav-link active" data-scroll-target="#study-background">Study Background</a></li>
+  <li><a href="#data-details" id="toc-data-details" class="nav-link" data-scroll-target="#data-details">Data Details</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References:</a></li>
+  </ul></li>
+  <li><a href="#geospatial-assessment-finding-suitable-areas-for-lobster" id="toc-geospatial-assessment-finding-suitable-areas-for-lobster" class="nav-link" data-scroll-target="#geospatial-assessment-finding-suitable-areas-for-lobster">Geospatial Assessment: Finding suitable areas for lobster</a>
+  <ul class="collapse">
+  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries">Load Libraries</a></li>
+  <li><a href="#creating-a-function-to-assess-suitable-areas" id="toc-creating-a-function-to-assess-suitable-areas" class="nav-link" data-scroll-target="#creating-a-function-to-assess-suitable-areas">Creating a Function to Assess Suitable Areas</a></li>
+  <li><a href="#load-data-define-criteria-variables" id="toc-load-data-define-criteria-variables" class="nav-link" data-scroll-target="#load-data-define-criteria-variables">Load Data &amp; Define Criteria Variables</a></li>
+  <li><a href="#finding-suistainable-lobster-habitat-analysis" id="toc-finding-suistainable-lobster-habitat-analysis" class="nav-link" data-scroll-target="#finding-suistainable-lobster-habitat-analysis">Finding Suistainable Lobster Habitat Analysis</a></li>
+  <li><a href="#suitable-area-for-lobster-aquaculture-map" id="toc-suitable-area-for-lobster-aquaculture-map" class="nav-link" data-scroll-target="#suitable-area-for-lobster-aquaculture-map">Suitable Area for Lobster Aquaculture Map</a></li>
+  <li><a href="#study-findings" id="toc-study-findings" class="nav-link" data-scroll-target="#study-findings">Study Findings</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">California Spiny Lobster: Habitat Assessment for Aquaculture Opportunities</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karol Paya </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 7, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="study-background" class="level1">
+<h1>Study Background</h1>
+<p>This study employs a geospatial analysis to assess the suitability of habitats for spiny lobsters <em>(Panulirus interruptus)</em> in California, with a particular focus on identifying areas most conducive to aquaculture development. Spiny lobsters are an economically significant species in the region, and their population dynamics are influenced by factors such as temperature and ocean depth. However, traditional fishing practices have led to pressure on wild populations, prompting a growing interest in sustainable aquaculture as a potential solution. By remote sensing technologies, this analysis integrates environmental data, such as sea surface temperature and Bathymetry to search for potential areas that could support viable lobster farming operations.</p>
+<p>Suitable Growing Conditions:</p>
+<p>To identify the optimal habitat for California spiny lobsters, the following environmental criteria are considered, based on existing research:</p>
+<ul>
+<li><p>Preferred Temperature Range: 14.8°C - 22.3°C</p></li>
+<li><p>Preferred Depth Range: 0 - 150 meters</p></li>
+</ul>
+<p>Source: <a href="https://www.sealifebase.ca/summary/Panulirus-interruptus.html">Sealifebase</a>, 2024</p>
+</section>
+<section id="data-details" class="level1">
+<h1>Data Details</h1>
+<ol type="1">
+<li>Sea Surface Temperature:</li>
+</ol>
+<p>The Sea Surface Temperature (SST) dataset from NOAA (2008-2012) provides daily global satellite-derived sea surface temperature anomalies at a 5 km resolution. This dataset is crucial for identifying areas with suitable temperature ranges for spiny lobsters, as their growth and habitat preferences are linked to specific water temperature conditions (14.8°C - 22.3°C). It is used to reclassify temperature data and pinpoint suitable lobster farming areas.</p>
+<ol start="2" type="1">
+<li>Bathymetry:</li>
+</ol>
+<p>The General Bathymetric Chart of the Oceans (GEBCO) providesbathymetric data that describes the ocean’s depth. This dataset is essential for evaluating the ocean depth of potential lobster habitats, as spiny lobsters prefer specific depth ranges (0-150 meters).</p>
+<ol start="3" type="1">
+<li>Exclusive Economic Zones (EEZs):</li>
+</ol>
+<p>The Exclusive Economic Zones (EEZs) dataset from MarineRegions.org defines the marine boundaries of countries.This dataset is used to mask the suitable lobster habitat areas by region, ensuring that only locations within the jurisdictional boundaries of relevant EEZs are considered in the final suitability analysis.</p>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References:</h2>
+<p><strong>Sea Surface Temperature</strong></p>
+<p>National Oceanic and Atmospheric Administration (NOAA). 2008-2012. 5km Daily Global Satellite Sea Surface Temperature Anomaly v3.1 [Data set]. NOAA National Centers for Environmental Information. Retrieved Nov.&nbsp;14, 2024 from https://www.ncei.noaa.gov</p>
+<p><strong>Bathymetry</strong></p>
+<p>General Bathymetric Chart of the Oceans (GEBCO). 2024. gridded bathymetry data [Data set]. Retrieved Nov.&nbsp;14, 2024 from https://www.gebco.net/data_and_products/gridded_bathymetry_data/#area</p>
+<p><strong>Exclusive Economic Zones</strong></p>
+<p>MarineRegions.org. (n.d.). Exclusive Economic Zones (EEZs) off the west coast of the United States [Data set]. Retrieved Nov.&nbsp;14, 2024 from https://www.marineregions.org/</p>
+</section>
+</section>
+<section id="geospatial-assessment-finding-suitable-areas-for-lobster" class="level1">
+<h1>Geospatial Assessment: Finding suitable areas for lobster</h1>
+<section id="load-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="load-libraries">Load Libraries</h2>
+<details>
+<summary>
+Click to view code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spData)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spDataLarge)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geodata)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+</section>
+<section id="creating-a-function-to-assess-suitable-areas" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-function-to-assess-suitable-areas">Creating a Function to Assess Suitable Areas</h2>
+<p>To identify the most suitable areas for spiny lobster aquaculture based on ocean depth and water temperature, a function was developed with the following steps:</p>
+<ol type="1">
+<li><p>Verify Dataset Coordinate System</p>
+<p>Ensure all datasets (bathymetry and temperature) are using a consistent and compatible coordinate reference system to facilitate accurate spatial analysis.</p></li>
+<li><p>Process Data</p>
+<ul>
+<li><p>Calculate Mean Temperature: Compute the average temperature across the study area to account for temporal variability in ocean temperatures.</p></li>
+<li><p>Convert Temperature Units: Standardize temperature data by converting all values to a consistent unit (e.g., Celsius) for uniform analysis.</p></li>
+<li><p>Crop and Re-sample Rasters: Clip and re-sample the temperature and bathymetry rasters to match the same spatial extent and resolution, ensuring alignment for further analysis.</p></li>
+</ul></li>
+<li><p>Calculate Suitable Areas</p>
+<ul>
+<li><p>Reclassify Depth and Temperature Data: Based on predefined suitability criteria (e.g., preferred depth range: 0-150 m, preferred temperature range: 14.8°C - 22.3°C), reclassify both the bathymetric and temperature rasters into binary suitability maps (suitable/unsuitable).</p></li>
+<li><p>Combine Rasters: Overlay and combine the reclassified rasters to identify areas that meet both the depth and temperature requirements for spiny lobster habitat suitability.</p></li>
+</ul></li>
+<li><p>Create Final Map Generate a visual representation of the suitable areas, highlighting regions that fulfill the specified environmental criteria for potential aquaculture development.</p></li>
+</ol>
+<details>
+<summary>
+Click to view code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the suitable_habitat_func function</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>suitable_habitat_func <span class="ot">&lt;-</span> <span class="cf">function</span>(tempt_combined,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                  depth, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                  wc_regions,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                  preferred_tempt_high,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                                  preferred_tempt_low,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                  preferred_depth_high,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                  preferred_depth_low) {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Step 1: Verify coordinate reference systems</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># List of datasets to check and reproject if necessary</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a list of dataset names as strings</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  dataset_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"wc_regions"</span>, <span class="st">"tempt_combined"</span>, <span class="st">"depth"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use mget to retrieve the datasets from the global environment</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  datasets <span class="ot">&lt;-</span> <span class="fu">mget</span>(dataset_names)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Loop over the datasets starting from the second dataset (index 2)</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(datasets)) {</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    dataset_name <span class="ot">&lt;-</span> datasets[[i]]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the CRS of the current dataset matches the CRS of the first dataset</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">crs</span>(datasets[[i]]) <span class="sc">==</span> <span class="fu">crs</span>(wc_regions)) {</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"File"</span>,i, <span class="st">"CRS matches"</span>, <span class="fu">names</span>(datasets)[<span class="dv">1</span>]))</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"File"</span>,i,<span class="st">" CRS does not match, reprojecting"</span>))</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Reproject the dataset to match the CRS of the first dataset</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      datasets[[i]] <span class="ot">&lt;-</span> <span class="fu">project</span>(datasets[[i]], <span class="fu">crs</span>(wc_regions))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      <span class="co">#depth&lt;-project(depth, crs(wc_regions))</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 2: Process data</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the mean temperature</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  tempt_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(tempt_combined, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Convert temperature from Kelvin to Celsius</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  tempt_avg_c <span class="ot">&lt;-</span> tempt_avg <span class="sc">-</span> <span class="fl">273.15</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Crop the depth raster to match the extent of the tempt raster</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  depth_cropped <span class="ot">&lt;-</span> <span class="fu">crop</span>(depth, <span class="fu">ext</span>(tempt_combined))</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Resample the depth raster to match the resolution of the tempt raster</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  depth_resampled <span class="ot">&lt;-</span> <span class="fu">resample</span>(depth_cropped, tempt_combined, <span class="at">method =</span> <span class="st">"near"</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure rasters have the resolution, and CRS</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">crs</span>(depth_resampled) <span class="ot">&lt;-</span> <span class="fu">crs</span>(depth)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ext</span>(depth_resampled) <span class="ot">&lt;-</span> <span class="fu">ext</span>(tempt_combined)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Double check with conditional statements</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">crs</span>(tempt_combined) <span class="sc">==</span> <span class="fu">crs</span>(depth_resampled) <span class="sc">&amp;&amp;</span> </span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">all</span>(<span class="fu">ext</span>(tempt_combined) <span class="sc">==</span> <span class="fu">ext</span>(depth_resampled)) <span class="sc">&amp;&amp;</span> </span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>      <span class="fu">all</span>(<span class="fu">res</span>(tempt_combined) <span class="sc">==</span> <span class="fu">res</span>(depth_resampled))) {</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"The rasters match in CRS, extent, and resolution."</span>)</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"The rasters do not match in one or more aspects."</span>)</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 3: Find suitable locations</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stack the rasters</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>  stacked_rasters <span class="ot">&lt;-</span><span class="fu">c</span>(tempt_avg_c, depth_resampled)</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reclassify temperature data</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>  rcl_tempt <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="cn">Inf</span>, preferred_tempt_low, <span class="dv">0</span>,           </span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    preferred_tempt_low, preferred_tempt_high, <span class="dv">1</span>,           </span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    preferred_tempt_high, <span class="cn">Inf</span>, <span class="dv">0</span>),</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reclassify the mean temperature raster</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>  sst_reclassified <span class="ot">&lt;-</span> <span class="fu">classify</span>(stacked_rasters<span class="sc">$</span>mean, <span class="at">rcl =</span> rcl_tempt)</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reclassify depth: </span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  rcl_depth <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="cn">Inf</span>, preferred_depth_low, <span class="dv">0</span>,          </span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    preferred_depth_low, preferred_depth_high, <span class="dv">1</span>,           </span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    preferred_depth_high, <span class="cn">Inf</span>, <span class="dv">0</span>), </span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reclassify the depth raster</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  depth_reclassified <span class="ot">&lt;-</span> <span class="fu">classify</span>(stacked_rasters<span class="sc">$</span>depth, <span class="at">rcl =</span> rcl_depth)</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stack the rasters</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>  suitable_locations <span class="ot">&lt;-</span><span class="fu">c</span>(sst_reclassified, depth_reclassified)</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine the reclassified temperature and depth rasters</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>  suitable_locations <span class="ot">&lt;-</span> <span class="fu">lapp</span>(suitable_locations, </span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">fun =</span> <span class="cf">function</span>(x, y) { <span class="fu">return</span>(x <span class="sc">*</span> y) })</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 4: Create map</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create transparent color to hide not-suitable areas</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>  transparent <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">0</span>)</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create an interactive map</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>  map <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>    <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>  </span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>    <span class="fu">addRasterImage</span>(suitable_locations, </span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>                   <span class="at">colors =</span> <span class="fu">c</span>(transparent, <span class="st">"firebrick"</span>),  </span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>                   <span class="at">opacity =</span> <span class="fl">0.6</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>    <span class="fu">addLegend</span>(<span class="at">position =</span> <span class="st">"topright"</span>, </span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>              <span class="at">pal =</span> <span class="fu">colorFactor</span>(<span class="at">palette =</span> <span class="fu">c</span>(transparent, <span class="st">"firebrick"</span>), <span class="at">domain =</span> <span class="fu">c</span>(<span class="dv">1</span>)),</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>              <span class="at">values =</span> <span class="fu">c</span>(<span class="dv">1</span>),</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>              <span class="at">title =</span> <span class="st">"Suitable Areas"</span>,</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>              <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Suitable"</span>),</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>              <span class="at">opacity =</span> <span class="dv">1</span>) </span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 5: Determine the most suitable EEZ and compute total area</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Rasterize the EEZ shapefile to match the resolution of the suitable locations raster</span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>  eez_raster <span class="ot">&lt;-</span> <span class="fu">rasterize</span>(wc_regions, suitable_locations, <span class="at">field =</span> <span class="st">"rgn"</span>)</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mask the suitable locations raster by the EEZ regions (keep valid areas only)</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>  suitable_in_eez <span class="ot">&lt;-</span> <span class="fu">mask</span>(suitable_locations, eez_raster)</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove NAs</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>  suitable_in_eez[<span class="fu">is.na</span>(suitable_in_eez)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verify the results with a unit test**</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Executing test: does suitable_in_eez variable contains only 0 or 1?"</span>)</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if suitable_in_eez only contains 0 or 1 (no NAs)</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">test_that</span>(<span class="st">"suitable_in_eez variable contains only 0 or 1"</span>, {</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_true</span>(<span class="fu">all</span>(suitable_in_eez[] <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)))</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate sum of suitable location for each region</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>  suitable_in_eez2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">zonal</span>(suitable_in_eez,eez_raster , <span class="at">fun =</span> <span class="st">"sum"</span>)</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>  suitable_in_eez2</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Rename the columns to reflect the calculation (old label comes from the mean temperature calculation)</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(suitable_in_eez2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mean"</span>, <span class="st">"suitable_sum"</span>)</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate cell size summary</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>  cell_size <span class="ot">&lt;-</span><span class="fu">cellSize</span>(suitable_in_eez)</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reproject raster to UTM Zone 10N (EPSG:32610)</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lon/lat WGS 84 is an angular measurement , we need metric unit</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>  projected_raster <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(suitable_in_eez, <span class="st">"EPSG:32610"</span>)</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract area in meters (m²) from UTM projection</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>  cell_area_m2 <span class="ot">&lt;-</span> <span class="fu">cellSize</span>(projected_raster)  </span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>  cell_area_m2<span class="ot">&lt;-</span> <span class="fu">minmax</span>(cell_area_m2)[<span class="dv">1</span>]</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print cell area for verification</span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Area of one cell (m2): "</span>, cell_area_m2))</span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the total area for each region</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>  suitable_in_eez2<span class="ot">&lt;-</span>suitable_in_eez2<span class="sc">%&gt;%</span></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total_area_m2=</span>suitable_sum<span class="sc">*</span> cell_area_m2)</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 6: Create summary table </span></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Using library gt to create a table to better present the results</span></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>  gt_table <span class="ot">&lt;-</span> suitable_in_eez2 <span class="sc">%&gt;%</span></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_header</span>(</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">"Suitable Habitat Area by Region in California"</span></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cols_label</span>(</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>      <span class="at">mean =</span> <span class="st">"Region"</span>,</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>      <span class="at">suitable_sum =</span> <span class="st">"Number of Cells"</span>,</span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>      <span class="at">total_area_m2=</span><span class="st">"Total Area (m²)"</span></span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fmt_number</span>(</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="fu">c</span>(total_area_m2),</span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>      <span class="at">decimals =</span> <span class="dv">0</span>)</span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assign the map and table to the global environment</span></span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(<span class="st">"map"</span>, map, <span class="at">envir =</span> .GlobalEnv)</span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(<span class="st">"gt_table"</span>, gt_table, <span class="at">envir =</span> .GlobalEnv)</span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+</section>
+<section id="load-data-define-criteria-variables" class="level2">
+<h2 class="anchored" data-anchor-id="load-data-define-criteria-variables">Load Data &amp; Define Criteria Variables</h2>
+<p>In order to perform the analysis and run the function for identifying suitable areas for lobster aquaculture, several key parameters need to be defined. First, the file paths must be specified. These include the path to the raster files containing water temperature and bathymetry data, which will be used to assess habitat suitability.</p>
+<p>Additionally, the time period must be assigned to capture relevant environmental conditions over time. criteria variables for both temperature and depth also need to be defined, these are:</p>
+<ul>
+<li>High Temperature Threshold: 22.3 C</li>
+<li>Low Temperature Threshold: 14.8C</li>
+<li>High Depth Threshold : 0</li>
+<li>Low Depth Threshold: -150 m</li>
+</ul>
+<details>
+<summary>
+Click to view code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load economic zones</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>wc_regions <span class="ot">&lt;-</span> <span class="fu">invisible</span>(<span class="fu">st_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wc_regions_clean.shp"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `wc_regions_clean' from data source 
+  `/Users/karolpaya/Documents/UCSB-MEDS/EDS223/Final project/lobster_habitat_assessment_california/data/wc_regions_clean.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 5 features and 5 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -129.1635 ymin: 30.542 xmax: -117.097 ymax: 49.00031
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load bathymetry</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>depth <span class="ot">&lt;-</span> <span class="fu">rast</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"depth.tif"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>depth<span class="ot">&lt;-</span><span class="fu">project</span>(depth, <span class="fu">crs</span>(wc_regions))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+|---------|---------|---------|---------|
+=========================================
+                                          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the specie's ideal temperature and ocean depth</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>preferred_tempt_high<span class="ot">&lt;-</span><span class="fl">22.3</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>preferred_tempt_low<span class="ot">&lt;-</span><span class="fl">14.8</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>preferred_depth_high<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>preferred_depth_low <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">150</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the temperature raster start and end year</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>tempt_year1 <span class="ot">&lt;-</span> <span class="dv">2008</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>tempt_year2 <span class="ot">&lt;-</span> <span class="dv">2012</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over the years to load the temperature raster files</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty list to store the rasters</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>tempt_rasters <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> tempt_year1<span class="sc">:</span>tempt_year2) {</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create file name for each year</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  file_name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"average_annual_sst_"</span>, year, <span class="st">".tif"</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Load raster</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  tempt_rasters[[year]] <span class="ot">&lt;-</span> <span class="fu">rast</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, file_name))  </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine all the rasters into one</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>tempt_combined <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">unlist</span>(tempt_rasters, <span class="at">use.names =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Project the temperature combined dataset</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>tempt_combined <span class="ot">&lt;-</span> <span class="fu">project</span>(tempt_combined, <span class="fu">crs</span>(wc_regions))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+</section>
+<section id="finding-suistainable-lobster-habitat-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="finding-suistainable-lobster-habitat-analysis">Finding Suistainable Lobster Habitat Analysis</h2>
+<p>In this section, we run the <code>suitable_habitat_func</code> function to identify and assess potential areas for sustainable spiny lobster aquaculture.</p>
+<details>
+<summary>
+Click to view code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suitable_habitat_func</span> (tempt_combined,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                       depth,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                       wc_regions,preferred_tempt_high,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                       preferred_tempt_low,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                       preferred_depth_high,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                       preferred_depth_low)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "File 2 CRS matches wc_regions"
+[1] "File 3 CRS matches wc_regions"
+[1] "The rasters match in CRS, extent, and resolution."
+[1] "Executing test: does suitable_in_eez variable contains only 0 or 1?"
+Test passed 🎉
+[1] "Area of one cell (m2):  17302982"</code></pre>
+</div>
+</div>
+</details>
+</section>
+<section id="suitable-area-for-lobster-aquaculture-map" class="level2">
+<h2 class="anchored" data-anchor-id="suitable-area-for-lobster-aquaculture-map">Suitable Area for Lobster Aquaculture Map</h2>
+<p>The map below illustrates the areas (highlighted in red) that meet both the depth and temperature criteria for spiny lobster aquaculture. The red areas on the map indicate zones where both the ocean depth (0-150 meters) and water temperature (14.8°C - 22.3°C) fall within the preferred ranges for sustainable aquaculture.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot map</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>map</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-0a8c4d12207217e40ce7" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-0a8c4d12207217e40ce7">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addRasterImage","args":["data:image/png;base64,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",[[49.98842296399999,-131.98475233],[29.99207998881318,-114.9878608010912]],null,null,{"tileSize":256,"zIndex":1,"minZoom":0,"opacity":0.6}]},{"method":"addLegend","args":[{"colors":["#D81A16"],"labels":["1"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"Suitable Areas","extra":null,"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[29.99207998881318,49.98842296399999],"lng":[-131.98475233,-114.9878608010912]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>The following table summarizes the calculated total area by region where lobsters can thrive.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display Summary Table</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>gt_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="kmnsasxemh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kmnsasxemh table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#kmnsasxemh thead, #kmnsasxemh tbody, #kmnsasxemh tfoot, #kmnsasxemh tr, #kmnsasxemh td, #kmnsasxemh th {
+  border-style: none;
+}
+
+#kmnsasxemh p {
+  margin: 0;
+  padding: 0;
+}
+
+#kmnsasxemh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#kmnsasxemh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kmnsasxemh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kmnsasxemh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kmnsasxemh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kmnsasxemh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kmnsasxemh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kmnsasxemh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kmnsasxemh .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#kmnsasxemh .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#kmnsasxemh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kmnsasxemh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kmnsasxemh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kmnsasxemh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kmnsasxemh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kmnsasxemh .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#kmnsasxemh .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#kmnsasxemh .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#kmnsasxemh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kmnsasxemh .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#kmnsasxemh .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kmnsasxemh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kmnsasxemh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kmnsasxemh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kmnsasxemh .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kmnsasxemh .gt_left {
+  text-align: left;
+}
+
+#kmnsasxemh .gt_center {
+  text-align: center;
+}
+
+#kmnsasxemh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kmnsasxemh .gt_font_normal {
+  font-weight: normal;
+}
+
+#kmnsasxemh .gt_font_bold {
+  font-weight: bold;
+}
+
+#kmnsasxemh .gt_font_italic {
+  font-style: italic;
+}
+
+#kmnsasxemh .gt_super {
+  font-size: 65%;
+}
+
+#kmnsasxemh .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#kmnsasxemh .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#kmnsasxemh .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#kmnsasxemh .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#kmnsasxemh .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#kmnsasxemh .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#kmnsasxemh .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#kmnsasxemh .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#kmnsasxemh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">Suitable Habitat Area by Region in California</th>
+</tr>
+<tr class="odd gt_col_headings">
+<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Region</th>
+<th id="suitable_sum" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Number of Cells</th>
+<th id="total_area_m2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total Area (m²)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="mean">Central California</td>
+<td class="gt_row gt_right" headers="suitable_sum">3</td>
+<td class="gt_row gt_right" headers="total_area_m2">51,908,946</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="mean">Northern California</td>
+<td class="gt_row gt_right" headers="suitable_sum">0</td>
+<td class="gt_row gt_right" headers="total_area_m2">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="mean">Oregon</td>
+<td class="gt_row gt_right" headers="suitable_sum">0</td>
+<td class="gt_row gt_right" headers="total_area_m2">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="mean">Southern California</td>
+<td class="gt_row gt_right" headers="suitable_sum">288</td>
+<td class="gt_row gt_right" headers="total_area_m2">4,983,258,816</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="mean">Washington</td>
+<td class="gt_row gt_right" headers="suitable_sum">1</td>
+<td class="gt_row gt_right" headers="total_area_m2">17,302,982</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="study-findings" class="level2">
+<h2 class="anchored" data-anchor-id="study-findings">Study Findings</h2>
+<p>The analysis presented above identifies the most suitable environmental conditions for a marine species in California, with a focus on prioritizing potential aquaculture locations. In this example, the species in question is the lobster, with the following optimal growth conditions:</p>
+<p>Temperature: 14.8°C - 22.3°C Depth: 0 - 150 meters</p>
+<p>To conduct this analysis, Sea Surface Temperature and Bathymetry data were processed to assess the suitability of various regions. The function developed for this analysis computes the total suitable area for each region in California, taking into account both temperature and depth criteria.</p>
+<p>Based on the results, the analysis suggests that Southern California offers the most favorable conditions for lobster growth, as both temperature and depth requirements are met in this region. This finding highlights Southern California as a prime location for lobster aquaculture, given its optimal environmental conditions.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
