@@ -1,0 +1,347 @@
+---
+title: "California Spiny Lobster Habitat Assessment for Aquaculture Opportunities"
+author: "Karol Paya"
+date: Dec. 7, 2024
+execute: 
+  eval: True
+  warning: False
+  message: False
+format:
+  html:
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+## Study Background
+This study employs a geospatial analysis to assess the suitability of habitats for spiny lobsters (Panulirus interruptus) in California, with a particular focus on identifying areas most conducive to aquaculture development. Spiny lobsters are an economically significant species in the region, and their population dynamics are influenced by factors such as temperature and ocean depth. However, traditional fishing practices have led to pressure on wild populations, prompting a growing interest in sustainable aquaculture as a potential solution. By remote sensing technologies, this analysis integrates environmental data, such as sea surface temperature and Bathymetry, to search for potential areas that could support viable lobster farming operations. 
+
+## Data Details
+
+**Suitable growing conditions**
+
+Using California spiny lobster *(Panulirus interruptus)* to showcase the suitable habitat function
+
+Location: Eastern Central Pacific, from San Luis Obispo Bay, California, USA, to Magdalena Bay, west coast of Baja California Sur, and along the west coast of the Gulf of California, to Carmen Island, Baja California Sur, Mexico.
+
+Research has shown that lobsters need the following conditions for optimal growth:
+- Preferred temperature: 14.8c - 22.3c
+- Preferred depth: 0 - 150 m 
+
+Source: https://www.sealifebase.ca/summary/Panulirus-interruptus.html
+
+**Sea Surface Temperature**
+
+National Oceanic and Atmospheric Administration (NOAA). 2008-2012. 5km Daily Global Satellite Sea Surface Temperature Anomaly v3.1 [Data set]. NOAA National Centers for Environmental Information. Retrieved Nov. 14, 2024 from https://www.ncei.noaa.gov
+
+**Bathymetry**
+
+General Bathymetric Chart of the Oceans (GEBCO). 2024. gridded bathymetry data [Data set]. Retrieved Nov. 14, 2024 from https://www.gebco.net/data_and_products/gridded_bathymetry_data/#area
+
+**Exclusive Economic Zones**
+
+MarineRegions.org. (n.d.). Exclusive Economic Zones (EEZs) off the west coast of the United States [Data set]. Retrieved Nov. 14, 2024 fromhttps://www.marineregions.org/
+
+## Load Libraries
+
+<details>
+<summary>Click to view code</summary>
+```{r}
+# Load libraries
+library(tmap)
+library(here)
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(gt)
+library(stars)
+library(terra)
+library(kableExtra)
+library(spData)
+library(spDataLarge)
+library(geodata)
+library(testthat)
+library(leaflet)
+library(raster)
+```
+</details>
+
+## Function Code
+
+To create a workflow to find the suitable areas based on two criteria: ocean depth and water temperature, a function was created with the following procedures:
+
+- Verification of dataset coordinate system
+- Process data: calculate mean temperature, convert temperature units, crop & resample raster to match all dataset extend and resolution
+- Calculate suitable area: reclassify depth and temperature data based on defined criteria, combine rasters
+- Create map
+
+<details>
+<summary>Click to view code</summary>
+```{r}
+# Define the suitable_habitat_func function
+suitable_habitat_func <- function(tempt_combined,
+                                  depth, 
+                                  wc_regions,
+                                  preferred_tempt_high,
+                                  preferred_tempt_low,
+                                  preferred_depth_high,
+                                  preferred_depth_low) {
+
+  #Step 1: Verify coordinate reference systems
+  
+  # List of datasets to check and reproject if necessary
+  # Create a list of dataset names as strings
+  dataset_names <- c("wc_regions", "tempt_combined", "depth")
+  # Use mget to retrieve the datasets from the global environment
+  datasets <- mget(dataset_names)
+
+  # Loop over the datasets starting from the second dataset (index 2)
+  for (i in 2:length(datasets)) {
+    dataset_name <- datasets[[i]]
+    # Check if the CRS of the current dataset matches the CRS of the first dataset
+    if (crs(datasets[[i]]) == crs(wc_regions)) {
+      print(paste("File",i, "CRS matches", names(datasets)[1]))
+    } else {
+      print(paste("File",i," CRS does not match, reprojecting"))
+      # Reproject the dataset to match the CRS of the first dataset
+      datasets[[i]] <- project(datasets[[i]], crs(wc_regions))
+      #depth<-project(depth, crs(wc_regions))
+      }
+    }
+  
+  # Step 2: Process data
+  
+  # Calculate the mean temperature
+  tempt_avg <- mean(tempt_combined, na.rm = TRUE)
+  
+  #Convert temperature from Kelvin to Celsius
+  tempt_avg_c <- tempt_avg - 273.15
+  
+  # Crop the depth raster to match the extent of the tempt raster
+  depth_cropped <- crop(depth, ext(tempt_combined))
+  
+  # Resample the depth raster to match the resolution of the tempt raster
+  depth_resampled <- resample(depth_cropped, tempt_combined, method = "near")
+  
+  # Ensure rasters have the resolution, and CRS
+  crs(depth_resampled) <- crs(depth)
+  ext(depth_resampled) <- ext(tempt_combined)
+  
+  # Double check with conditional statements
+  if (crs(tempt_combined) == crs(depth_resampled) && 
+      all(ext(tempt_combined) == ext(depth_resampled)) && 
+      all(res(tempt_combined) == res(depth_resampled))) {
+    print("The rasters match in CRS, extent, and resolution.")
+  } else {
+    print("The rasters do not match in one or more aspects.")
+  }
+  
+  # Step 3: Find suitable locations
+  
+  # Stack the rasters
+  stacked_rasters <-c(tempt_avg_c, depth_resampled)
+  
+  # Reclassify temperature data
+  rcl_tempt <- matrix(c(
+    -Inf, preferred_tempt_low, 0,           
+    preferred_tempt_low, preferred_tempt_high, 1,           
+    preferred_tempt_high, Inf, 0),
+    ncol = 3, byrow = TRUE)
+  
+  # Reclassify the mean temperature raster
+  sst_reclassified <- classify(stacked_rasters$mean, rcl = rcl_tempt)
+  
+  # Reclassify depth: 
+  rcl_depth <- matrix(c(
+    -Inf, preferred_depth_low, 0,          
+    preferred_depth_low, preferred_depth_high, 1,           
+    preferred_depth_high, Inf, 0), 
+    ncol = 3, byrow = TRUE)
+  
+  # Reclassify the depth raster
+  depth_reclassified <- classify(stacked_rasters$depth, rcl = rcl_depth)
+  
+  # Stack the rasters
+  suitable_locations <-c(sst_reclassified, depth_reclassified)
+  
+  # Combine the reclassified temperature and depth rasters
+  suitable_locations <- lapp(suitable_locations, 
+                                  fun = function(x, y) { return(x * y) })
+  
+  # Step 4: Create map
+  
+  # Create transparent color to hide not-suitable areas
+  transparent <- rgb(1, 0, 0, alpha = 0)
+  
+  # Create an interactive map
+  map <- leaflet() %>%
+    addTiles() %>%  
+    addRasterImage(suitable_locations, 
+                   colors = c(transparent, "firebrick"),  
+                   opacity = 0.6) %>%  
+    addLegend(position = "topright", 
+              pal = colorFactor(palette = c(transparent, "firebrick"), domain = c(1)),
+              values = c(1),
+              title = "Suitable Areas",
+              labels = c("Suitable"),
+              opacity = 1) 
+  
+  # Step 5: Determine the most suitable EEZ and compute total area
+  
+  # Rasterize the EEZ shapefile to match the resolution of the suitable locations raster
+  eez_raster <- rasterize(wc_regions, suitable_locations, field = "rgn")
+  
+  # Mask the suitable locations raster by the EEZ regions (keep valid areas only)
+  suitable_in_eez <- mask(suitable_locations, eez_raster)
+  
+  # Remove NAs
+  suitable_in_eez[is.na(suitable_in_eez)] <- 0
+  
+  # Verify the results with a unit test**
+  
+  print("Executing test: does suitable_in_eez variable contains only 0 or 1?")
+  # Test if suitable_in_eez only contains 0 or 1 (no NAs)
+  test_that("suitable_in_eez variable contains only 0 or 1", {
+    expect_true(all(suitable_in_eez[] %in% c(0, 1)))
+  })
+  
+  # Calculate sum of suitable location for each region
+  suitable_in_eez2 <- terra::zonal(suitable_in_eez,eez_raster , fun = "sum")
+  suitable_in_eez2
+  
+  # Rename the columns to reflect the calculation (old label comes from the mean temperature calculation)
+  colnames(suitable_in_eez2) <- c("mean", "suitable_sum")
+  
+  # Generate cell size summary
+  cell_size <-cellSize(suitable_in_eez)
+  
+  # Reproject raster to UTM Zone 10N (EPSG:32610)
+  # lon/lat WGS 84 is an angular measurement , we need metric unit
+  projected_raster <- terra::project(suitable_in_eez, "EPSG:32610")
+
+  # Extract area in meters (m²) from UTM projection
+  cell_area_m2 <- cellSize(projected_raster)  
+  cell_area_m2<- minmax(cell_area_m2)[1]
+
+  # Print cell area for verification
+  print(paste("Area of one cell (m2): ", cell_area_m2))
+  
+  # Calculate the total area for each region
+  suitable_in_eez2<-suitable_in_eez2%>%
+    mutate(total_area_m2=suitable_sum* cell_area_m2)
+  
+  # Step 6: Create summary table 
+  
+  # Using library gt to create a table to better present the results
+  gt_table <- suitable_in_eez2 %>%
+    gt() %>%
+    tab_header(
+      title = "Suitable Habitat Area by Region in California"
+    ) %>%
+    cols_label(
+      mean = "Region",
+      suitable_sum = "Number of Cells",
+      total_area_m2="Total Area (m²)"
+    ) %>%
+    fmt_number(
+      columns = c(total_area_m2),
+      decimals = 0)
+
+  # Assign the map and table to the global environment
+  assign("map", map, envir = .GlobalEnv)
+  assign("gt_table", gt_table, envir = .GlobalEnv)
+}
+``` 
+</details>
+
+## Load Data and Assign Input Variables
+
+This section is to assign the filepath to read the data, define input variables:
+
+- High Temperature Threshold: 22.3 C
+- Low Temperature Threshold: 14.8C
+- High Depth Threshold : 0
+- Low Depth Threshold: -150 m
+
+
+<details>
+<summary>Click to view code</summary>
+```{r}
+# Load economic zones
+wc_regions <- invisible(st_read(here::here("data", "wc_regions_clean.shp")))
+
+# Load bathymetry
+depth <- rast(here::here("data","depth.tif"))
+depth<-project(depth, crs(wc_regions))
+
+# Define the specie's ideal temperature and ocean depth
+preferred_tempt_high<-22.3
+preferred_tempt_low<-14.8
+preferred_depth_high<-0
+preferred_depth_low <- -150
+
+# Define the temperature raster start and end year
+tempt_year1 <- 2008
+tempt_year2 <- 2012
+
+# Loop over the years to load the temperature raster files
+# Create an empty list to store the rasters
+tempt_rasters <- list()
+  
+for (year in tempt_year1:tempt_year2) {
+    
+  # Create file name for each year
+  file_name <- paste0("average_annual_sst_", year, ".tif")
+    
+  # Load raster
+  tempt_rasters[[year]] <- rast(here::here("data", file_name))  
+  }
+  
+# Combine all the rasters into one
+tempt_combined <- rast(unlist(tempt_rasters, use.names = TRUE))
+
+# Project the temperature combined dataset
+tempt_combined <- project(tempt_combined, crs(wc_regions))
+```
+</details>
+
+## Finding Suistainable Lobster Habitat Analysis
+
+Section that runs the `suitable_habitat_func` function to obtain results:
+
+<details>
+<summary>Click to view code</summary>
+
+```{r}
+suitable_habitat_func (tempt_combined,
+                       depth,
+                       wc_regions,preferred_tempt_high,
+                       preferred_tempt_low,
+                       preferred_depth_high,
+                       preferred_depth_low)
+```
+
+</details>
+
+## California Map
+
+The map below, depicts the areas in red where it meets both criteria: suitable depth and temperature.
+```{r}
+map
+```
+
+The following table summarizes the calculated total area by region where lobsters can thrive.
+
+```{r}
+gt_table
+```
+
+## Study Findings
+
+The analysis presented above identifies the most suitable environmental conditions for a marine species in California, with a focus on prioritizing potential aquaculture locations. In this example, the species in question is the lobster, with the following optimal growth conditions:
+
+Temperature: 14.8°C - 22.3°C
+Depth: 0 - 150 meters
+
+To conduct this analysis, Sea Surface Temperature and Bathymetry data were processed to assess the suitability of various regions. The function developed for this analysis computes the total suitable area for each region in California, taking into account both temperature and depth criteria.
+
+Based on the results, the analysis suggests that Southern California offers the most favorable conditions for lobster growth, as both temperature and depth requirements are met in this region. This finding highlights Southern California as a prime location for lobster aquaculture, given its optimal environmental conditions.
